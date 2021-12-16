@@ -1,12 +1,11 @@
 package com.multiplatform.demo.controller
 
 import com.multiplatform.demo.model.DetailResponse
+import com.multiplatform.demo.model.ListDetailRequest
 import com.multiplatform.demo.model.WebResponse
 import com.multiplatform.demo.model.createDetailRequest
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
 import com.multiplatform.demo.service.DetailService
-import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.*
 
 @RestController
 class DetailController(val detailService: DetailService) {
@@ -24,6 +23,23 @@ class DetailController(val detailService: DetailService) {
             code = 200,
             status = "OK",
             data = detailResponse
+        )
+    }
+
+    @GetMapping(
+        value = ["/api/detail"],
+        produces = ["application/json"]
+        )
+    fun listDetail(
+        @RequestParam(value = "size", defaultValue = "10") size: Int,
+        @RequestParam(value = "page", defaultValue = "0")page: Int):WebResponse<List<DetailResponse>>{
+        val request = ListDetailRequest(page = page, size = size)
+        val response = detailService.listDetail(request)
+
+        return WebResponse(
+            code = 200,
+            status = "OK",
+            data = response
         )
     }
 }

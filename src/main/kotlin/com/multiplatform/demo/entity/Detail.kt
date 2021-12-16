@@ -9,9 +9,15 @@ data class Detail(
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Int,
 
-    @Column(name ="title")
-    val title: String,
+    @Column(name ="R")
+    val R: Int,
 
-    @Column(name ="description" )
-    val description: String
+    @Column(name ="G" )
+    val G: Int,
+
+    @Column(name = "B")
+    val B: Int,
+
+    @Column(name = "pH")
+    val pH: Int
 )

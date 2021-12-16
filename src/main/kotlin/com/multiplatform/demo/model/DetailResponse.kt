@@ -3,7 +3,11 @@ package com.multiplatform.demo.model
 data class DetailResponse(
     val id: Int,
 
-    val title: String,
+    val R: Int,
 
-    val description: String
+    val G: Int,
+
+    val B: Int,
+
+    val pH: Int
 )

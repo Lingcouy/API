@@ -4,7 +4,11 @@ data class createDetailRequest (
 
         val  id: Int,
 
-        val title: String,
+        val R: Int,
 
-        val description: String
+        val G: Int,
+
+        val B: Int,
+
+        val pH: Int
         )
